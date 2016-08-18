@@ -2,13 +2,28 @@
 <a class="btn btn-default" href="#/">Вернуться к поиску</a>
 <hr>
 <h3 class="text-center">Список новостей по запросу: <br>{{nc.query}}</h3>
-<a href="/#/news/view/{{$index}}" ng-repeat="post in nc.news">
-  <div class="panel panel-primary" >
-    <div class="panel-heading">{{nc.getDate(post.date)}}</div>
-    <div class="panel-body">{{nc.getText(post.text)}}</div>
+
+  <div class="panel panel-primary" ng-repeat="post in nc.news">
+    <div class="panel-heading">
+      <a href="/#/news/view/{{$index}}">
+        {{nc.getDate(post.date)}}
+      </a>
+      <div class="btn btn-default btn-xs">
+        <a href="/#/news/view/{{$index}}">Перейти к новости</a>
+      </div>
+    </div>
+    <div class="panel-body">
+      <div class="post-text">
+        {{nc.getText(post.text)}}
+      </div>
+    <br>
+    <div class="post-images">
+      <a href="{{image.photo.src_big}}" data-lightbox="image-{{$parent.$index}}" data-title="post image" ng-repeat="image in nc.getImages($index)">
+          <img src="{{image.photo.src}}" alt="" />
+      </a>
+    </div>
+  </div>
     <div class="panel-footer">
       <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> {{post.likes.count}}
     </div>
   </div>
-
-</a>

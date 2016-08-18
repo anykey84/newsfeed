@@ -1,6 +1,7 @@
 body{
   height: 100vh;
   font-family: Verdana, Geneva, sans-serif;
+  padding-top: 20px;
 }
 
 a:hover{
@@ -12,4 +13,13 @@ a:hover{
   margin-top: 200px;
   left: 50%;
   margin-left: -64px;
+}
+
+.panel-heading{
+  a{
+    color: #fff;
+  }
+  .btn > a{
+    color: inherit;
+  }
 }

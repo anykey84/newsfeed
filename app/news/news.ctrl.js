@@ -12,10 +12,23 @@ angular.module('newsfeed')
     vm.getDate = function(timestamp){
       var date = new Date();
       date.setTime(timestamp*1000);
-      return date.toUTCString();
-    }
+      return date.toLocaleDateString('ru-RU')+" "+date.toLocaleTimeString('ru-RU');
+    };
     vm.getText = function(html){
       return html.slice(0,100) + "...";
+    };
+    vm.getImages = function(index){
+      var arr2 = [];
+      if(vm.news[index].attachments !== undefined){
+        var arr = vm.news[index].attachments;
+
+        for(var att in arr){
+          if (arr[att]['type'] === "photo"){
+            arr2.push(arr[att]);
+          }
+        }
+      }
+      return arr2;
     }
     console.log(vm.news);
-  }])
+  }]);

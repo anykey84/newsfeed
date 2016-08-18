@@ -3,7 +3,15 @@
 <hr>
   <div class="panel panel-primary" >
     <div class="panel-heading">{{vc.getDate(vc.post.date)}}</div>
-    <div class="panel-body">{{vc.getText(vc.post.text)}}</div>
+    <div class="panel-body">{{vc.getText(vc.post.text)}}
+      <br>
+      <div class="images">
+        <a href="{{image.photo.src_big}}" data-lightbox="image-{{$parent.$index}}" data-title="post image"
+        ng-repeat="image in vc.getImages($index)">
+            <img src="{{image.photo.src}}" alt="" />
+        </a>
+      </div>
+    </div>
     <div class="panel-footer">
       <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> {{vc.post.likes.count}}
     </div>
