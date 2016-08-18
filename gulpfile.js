@@ -41,16 +41,17 @@ gulp.task('sass', function () {
     .pipe(connect.reload());
 });
 
-// gulp.task('js-min', function () {
-//     return gulp.src([
-//         'bower_components/angular/angular.min.js'
-//         , 'node_modules/angular-ui-bootstrap/dist/ui-bootstrap.js'
-//         , 'bower_components/angular-route/angular-route.min.js'
-//         , 'bower_components/angular-sanitize/angular-sanitize.min.js'
-//     ])
-//       .pipe(concat('vendor.js'))
-//       .pipe(gulp.dest('assets/js/'))
-// });
+gulp.task('vendor-js', function () {
+    return gulp.src([
+        'bower_components/angular/angular.min.js',
+        'node_modules/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js',
+        'bower_components/angular-route/angular-route.min.js',
+        'bower_components/angular-sanitize/angular-sanitize.min.js',
+        'bower_components/lightbox2/dist/js/lightbox-plus-jquery.min.js'
+    ])
+      .pipe(concat('vendor.js'))
+      .pipe(gulp.dest('assets/js/'));
+});
 
 
 gulp.task('js', function() {
@@ -63,23 +64,31 @@ gulp.task('js', function() {
       .pipe(connect.reload());
     });
 
-// gulp.task('css', function () {
-//     return gulp.src(["bower_components/bootstrap/dist/css/bootstrap.min.css"
-//     ])
-//       .pipe(concatCss("vendor.css"))
-//       .pipe(cleanCSS({ compatibility: 'ie8' }))
-//       .pipe(gulp.dest('assets/css/'))
-//       .pipe(connect.reload());
-// });
+  gulp.task('images', function() {
+      return gulp.src([
+          'bower_components/lightbox2/dist/images/*'
+      ])
+      .pipe(gulp.dest('assets/lightbox2/dist/images/'))
+      });
+
+gulp.task('vendor-css', function () {
+    return gulp.src(["bower_components/bootstrap/dist/css/bootstrap.min.css",
+    "bower_components/lightbox2/dist/css/lightbox.min.css"
+    ])
+      .pipe(concatCss("vendor.css"))
+      .pipe(cleanCSS({ compatibility: 'ie8' }))
+      .pipe(gulp.dest('assets/css/'))
+      .pipe(connect.reload());
+});
 
 gulp.task('fonts', function () {
-    return gulp.src(["bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2"
-        , "bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.eot"
-        , "bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.svg"
-        , "bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.ttf"
-        , "bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.woff"
+    return gulp.src(["bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.woff2",
+    "bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.eot",
+    "bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.svg",
+    "bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.ttf",
+    "bower_components/bootstrap/dist/fonts/glyphicons-halflings-regular.woff"
     ])
       .pipe(gulp.dest('assets/fonts/'));
 });
 
-gulp.task('default', ['js', 'sass', 'fonts', 'connect', 'watch']);
+gulp.task('default', ['js', 'vendor-js', 'sass', 'vendor-css', 'fonts', 'images', 'connect', 'watch']);
