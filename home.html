@@ -1,0 +1,13 @@
+
+<h1 class="text-center">Поиск новостей ВК</h1>
+<form class="form-horizontal" ng-submit="hc.search()">
+  <div class="col-sm-8 col-md-9">
+    <div class="form-group">
+      <input class="form-control" type="text" name="request"
+        placeholder="Фраза для поиска" value="" ng-model="hc.query" required>
+    </div>
+  </div>
+  <div class="col-sm-4 col-md-3">
+    <input type="submit" class="btn btn-primary btn-block" value="Получить новости">
+  </div>
+</form>

@@ -1,0 +1,12 @@
+{
+  "name": "ASP.NET",
+  "private": true,
+  "directory": "bower_components",
+  "dependencies": {},
+  "devDependencies": {
+    "bootstrap": "^3.3.7",
+    "angular": "1.5.8",
+    "angular-route": "^1.5.8",
+    "angular-sanitize": "^1.5.8"
+  }
+}
