@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('newsfeed')
-  .controller('NewsCtrl', ['$location', function($location){
+  .controller('NewsCtrl', ['$location', 'dataService', function($location, dataService){
     var vm = this;
-    vm.text = 'Google';
+    vm.news = dataService.news;
   }])

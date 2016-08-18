@@ -1,13 +1,12 @@
 'use strict';
 
 angular.module('newsfeed')
-  .controller('HomeCtrl', ['$location', 'vkService', function($location, vkService){
+  .controller('HomeCtrl', ['$location', 'vkService', 'dataService', function($location, vkService, dataService){
     var vm = this;
-    vm.text = 'Google';
     vm.search = function(){
       vkService.getNewsfeed(encodeURI(vm.query)).then(function(result){
-        console.log(result.data.response);
-      });
-      // $location.path('/news');
+        dataService.news = result.data.response;
+        $location.path('/news');
+    });
     }
   }])

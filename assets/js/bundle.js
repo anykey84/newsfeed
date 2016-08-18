@@ -24,6 +24,16 @@ angular
 
 'use strict';
 
+
+angular.module('newsfeed')
+.factory('dataService', function() {
+  return {
+    news: []
+  }
+});
+
+'use strict';
+
 angular.module('newsfeed')
   .factory('vkService', ['$http', function($http){
     return {
@@ -40,21 +50,20 @@ angular.module('newsfeed')
 'use strict';
 
 angular.module('newsfeed')
-  .controller('HomeCtrl', ['$location', 'vkService', function($location, vkService){
+  .controller('HomeCtrl', ['$location', 'vkService', 'dataService', function($location, vkService, dataService){
     var vm = this;
-    vm.text = 'Google';
     vm.search = function(){
       vkService.getNewsfeed(encodeURI(vm.query)).then(function(result){
-        console.log(result.data.response);
-      });
-      // $location.path('/news');
+        dataService.news = result.data.response;
+        $location.path('/news');
+    });
     }
   }])
 
 'use strict';
 
 angular.module('newsfeed')
-  .controller('NewsCtrl', ['$location', function($location){
+  .controller('NewsCtrl', ['$location', 'dataService', function($location, dataService){
     var vm = this;
-    vm.text = 'Google';
+    vm.news = dataService.news;
   }])
