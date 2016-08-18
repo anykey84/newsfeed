@@ -1,0 +1,10 @@
+
+<a class="btn btn-default" href="#/">Вернуться к поиску</a>
+<hr>
+<h3 class="text-center">Список новостей по запросу: <br>{{nc.query}}</h3>
+<a href="news/view/{{post.id}}" ng-repeat="post in nc.news">
+  <div class="panel panel-primary" >
+    <div class="panel-heading">{{nc.getDate(post.date)}}</div>
+    <div class="panel-body">{{nc.getText(post.text)}}</div>
+  </div>
+</a>

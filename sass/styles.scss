@@ -2,3 +2,14 @@ body{
   height: 100vh;
   font-family: Verdana, Geneva, sans-serif;
 }
+
+a:hover{
+  text-decoration: none;
+}
+
+.preloader{
+  position: fixed;
+  margin-top: 200px;
+  left: 50%;
+  margin-left: -64px;
+}

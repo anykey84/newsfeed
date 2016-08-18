@@ -4,6 +4,7 @@
 angular.module('newsfeed')
 .factory('dataService', function() {
   return {
-    news: []
+    news: [],
+    query: ''
   }
 });

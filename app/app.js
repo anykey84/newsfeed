@@ -1,22 +1,22 @@
 'use strict';
 
 angular
-  .module('newsfeed', ['ngRoute'])
+  .module('newsfeed', ['ngRoute', 'ui.bootstrap'])
   .config(['$routeProvider', '$locationProvider',
     function($routeProvider, $locationProvider){
       $routeProvider
       .when('/', {
-          templateUrl: 'home.html',
+          templateUrl: '/app/home/home.html',
           controller: 'HomeCtrl',
           controllerAs: 'hc'
       })
       .when('/news', {
-          templateUrl: 'news.html',
+          templateUrl: '/app/news/news.html',
           controller: 'NewsCtrl',
           controllerAs: 'nc'
       })
       .when('/news/view/:par', {
-          templateUrl: 'view.html'
+          templateUrl: '/app/view/view.html'
 
       })
       .otherwise({redirectTo:'/'})
