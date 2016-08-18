@@ -15,9 +15,10 @@ angular
           controller: 'NewsCtrl',
           controllerAs: 'nc'
       })
-      .when('/news/view/:par', {
-          templateUrl: '/app/view/view.html'
-
+      .when('/news/view/:post', {
+          templateUrl: '/app/view/view.html',
+          controller: 'ViewCtrl',
+          controllerAs: 'vc'
       })
       .otherwise({redirectTo:'/'})
     }])
@@ -70,12 +71,11 @@ angular.module('newsfeed')
 angular.module('newsfeed')
   .controller('NewsCtrl', ['$location', 'dataService', function($location, dataService){
     var vm = this;
-    vm.news = dataService.news.slice(1);
-
     if(dataService.query){
+      vm.news = dataService.news.slice(1);
       vm.query = dataService.query;
     } else {
-      $location.path('#');
+      $location.path('/#');
     }
     vm.getDate = function(timestamp){
       var date = new Date();
@@ -83,8 +83,31 @@ angular.module('newsfeed')
       return date.toUTCString();
     }
     vm.getText = function(html){
-      console.log(html);
       return html.slice(0,100) + "...";
     }
     console.log(vm.news);
+  }])
+
+'use strict';
+
+angular.module('newsfeed')
+  .controller('ViewCtrl', ['$routeParams', '$location', 'dataService',
+  function($routeParams, $location, dataService){
+    var vm = this;
+    console.log($routeParams);
+    if($routeParams.post && dataService.news.length){
+      vm.query = dataService.query;
+      vm.news = dataService.news.slice(1);
+      vm.post = vm.news[$routeParams.post];
+    } else {
+      $location.path('/#');
+    }
+    vm.getDate = function(timestamp){
+      var date = new Date();
+      date.setTime(timestamp*1000);
+      return date.toUTCString();
+    }
+    vm.getText = function(html){
+      return html;
+    }
   }])

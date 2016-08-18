@@ -1,11 +1,14 @@
 'use strict';
 
 angular.module('newsfeed')
-  .controller('NewsCtrl', ['$location', 'dataService', function($location, dataService){
+  .controller('ViewCtrl', ['$routeParams', '$location', 'dataService',
+  function($routeParams, $location, dataService){
     var vm = this;
-    if(dataService.query){
-      vm.news = dataService.news.slice(1);
+    console.log($routeParams);
+    if($routeParams.post && dataService.news.length){
       vm.query = dataService.query;
+      vm.news = dataService.news.slice(1);
+      vm.post = vm.news[$routeParams.post];
     } else {
       $location.path('/#');
     }
@@ -15,7 +18,6 @@ angular.module('newsfeed')
       return date.toUTCString();
     }
     vm.getText = function(html){
-      return html.slice(0,100) + "...";
+      return html;
     }
-    console.log(vm.news);
   }])

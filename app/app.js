@@ -15,9 +15,10 @@ angular
           controller: 'NewsCtrl',
           controllerAs: 'nc'
       })
-      .when('/news/view/:par', {
-          templateUrl: '/app/view/view.html'
-
+      .when('/news/view/:post', {
+          templateUrl: '/app/view/view.html',
+          controller: 'ViewCtrl',
+          controllerAs: 'vc'
       })
       .otherwise({redirectTo:'/'})
     }])

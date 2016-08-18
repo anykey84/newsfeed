@@ -16,9 +16,9 @@ gulp.task('connect', function() {
 });
 
 gulp.task('watch', function () {
-  gulp.watch(['./*.html', './app/*/*.html'], ['html']);
-  gulp.watch(['./app/*.js', './app/*/*.js'], ['js']);
-  gulp.watch('./sass/*.scss', ['sass']);
+  gulp.watch(['*.html', 'app/*/*.html'], ['html']);
+  gulp.watch(['app/*.js', 'app/*/*.js'], ['js']);
+  gulp.watch('sass/*.scss', ['sass']);
 });
 
 
