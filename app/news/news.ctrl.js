@@ -15,7 +15,7 @@ angular.module('newsfeed')
       return date.toLocaleDateString('ru-RU')+" "+date.toLocaleTimeString('ru-RU');
     };
     vm.getText = function(html){
-      return html.slice(0,100) + "...";
+      return htmlDecode(html).slice(0,300) + "...";
     };
     vm.getImages = function(index){
       var arr2 = [];
@@ -31,4 +31,10 @@ angular.module('newsfeed')
       return arr2;
     }
     console.log(vm.news);
-  }]);
+
+    function htmlDecode(input)
+    {
+      var doc = new DOMParser().parseFromString(input, "text/html");
+      return doc.documentElement.textContent;
+    }
+    }]);
