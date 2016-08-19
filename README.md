@@ -1,10 +1,14 @@
-Требуются Node.js и Gulp.js \n
+Требуются Node.js и Gulp.js
 
 Установка: \n
-$ git clone https://github.com/anykey84/newsfeed.git \n
-$ cd newsfeed \n
-$ npm install \n
-$ bower install \n
-$ gulp \n
+$ git clone https://github.com/anykey84/newsfeed.git
+
+$ cd newsfeed
+
+$ npm install
+
+$ bower install
+
+$ gulp
 
 Последняя команда запускает проект на локальном веб-сервере по адресу http://localhost:8080
