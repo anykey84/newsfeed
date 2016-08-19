@@ -1,7 +1,7 @@
 'use strict';
 
 angular
-  .module('newsfeed', ['ngRoute', 'ui.bootstrap'])
+  .module('newsfeed', ['ngRoute', 'ngSanitize'])
   .config(['$routeProvider', '$locationProvider',
     function($routeProvider, $locationProvider){
       $routeProvider
@@ -47,16 +47,7 @@ angular.module('newsfeed')
         });
       },
       stat: function(querydata){
-        return $http({
-          method: 'POST',
-          url: 'http://ft.dev.hismith.ru/stat/create/',
-          data: querydata,
-          contentType: "application/json; charset=utf-8",
-          dataType: "json",
-          headers: {
-            Accept:'application/json'
-          }
-        }).success(function(data){
+        return $http.post('http://ft.dev.hismith.ru/stat/create/', querydata).success(function(data){
           return;
         });
       }
@@ -71,13 +62,10 @@ angular.module('newsfeed')
     vm.load = false;
     vm.search = function(){
       vm.load = true;
-      var data = $.param({
-                query: vm.query
-      });
-      vkService.stat(data).then(function(result){
+      vkService.stat($.param({query: vm.query})).then(function(result){
         console.log(result);
       });
-      vkService.getNewsfeed(data).then(function(result){
+      vkService.getNewsfeed($.param({q: vm.query})).then(function(result){
         dataService.query = vm.query;
         dataService.news = result.data.response;
         vm.load = false;

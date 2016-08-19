@@ -11,16 +11,7 @@ angular.module('newsfeed')
         });
       },
       stat: function(querydata){
-        return $http({
-          method: 'POST',
-          url: 'http://ft.dev.hismith.ru/stat/create/',
-          data: querydata,
-          contentType: "application/json; charset=utf-8",
-          dataType: "json",
-          headers: {
-            Accept:'application/json'
-          }
-        }).success(function(data){
+        return $http.post('http://ft.dev.hismith.ru/stat/create/', querydata).success(function(data){
           return;
         });
       }

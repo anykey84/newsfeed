@@ -8,7 +8,7 @@
     </div>
   </div>
   <div class="col-sm-4 col-md-3">
-    <input type="submit" class="btn btn-primary btn-block" value="Получить новости">
+    <input ng-disabled="hc.load" type="submit" class="btn btn-primary btn-block" value="Получить новости">
   </div>
 </form>
 <img ng-show="hc.load" class="preloader" src="/assets/img/Preloader_1.gif" alt="">
