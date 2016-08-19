@@ -44,10 +44,24 @@ angular.module('newsfeed')
           "https://api.vk.com/method/newsfeed.search?q="+query+"&callback=JSON_CALLBACK"
         ).success(function(data){
           return;
-        })
+        });
+      },
+      stat: function(querydata){
+        return $http({
+          method: 'POST',
+          url: 'http://ft.dev.hismith.ru/stat/create/',
+          data: querydata,
+          contentType: "application/json; charset=utf-8",
+          dataType: "json",
+          headers: {
+            Accept:'application/json'
+          }
+        }).success(function(data){
+          return;
+        });
       }
-    }
-  }])
+    };
+  }]);
 
 'use strict';
 
@@ -57,7 +71,13 @@ angular.module('newsfeed')
     vm.load = false;
     vm.search = function(){
       vm.load = true;
-      vkService.getNewsfeed(encodeURI(vm.query)).then(function(result){
+      var data = $.param({
+                query: vm.query
+      });
+      vkService.stat(data).then(function(result){
+        console.log(result);
+      });
+      vkService.getNewsfeed(data).then(function(result){
         dataService.query = vm.query;
         dataService.news = result.data.response;
         vm.load = false;
