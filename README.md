@@ -1,6 +1,6 @@
 Требуются Node.js и Gulp.js
 
-Установка: 
+Установка:
 $ git clone https://github.com/anykey84/newsfeed.git
 $ cd newsfeed
 $ npm install
