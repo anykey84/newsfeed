@@ -30,7 +30,6 @@ angular.module('newsfeed')
       }
       return arr2;
     }
-    console.log(vm.news);
 
     function htmlDecode(input)
     {
