@@ -1,7 +1,7 @@
 'use strict';
 
 angular
-  .module('newsfeed', ['ngRoute', 'ngSanitize'])
+  .module('newsfeed', ['ngRoute'])
   .config(['$routeProvider', '$locationProvider',
     function($routeProvider, $locationProvider){
       $routeProvider

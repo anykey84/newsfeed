@@ -9,7 +9,7 @@ angular.module('newsfeed')
       vkService.stat($.param({query: vm.query})).then(function(result){
         console.log(result);
       });
-      vkService.getNewsfeed($.param({q: vm.query})).then(function(result){
+      vkService.getNewsfeed($.param({q: vm.query, extended: 1})).then(function(result){
         dataService.query = vm.query;
         dataService.news = result.data.response;
         vm.load = false;

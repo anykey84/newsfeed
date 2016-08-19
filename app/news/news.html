@@ -6,7 +6,7 @@
   <div class="panel panel-primary" ng-repeat="post in nc.news">
     <div class="panel-heading">
       <a href="/#/news/view/{{$index}}">
-        {{nc.getDate(post.date)}}
+        [{{nc.getDate(post.date)}}]
       </a>
       <div class="btn btn-default btn-xs">
         <a href="/#/news/view/{{$index}}">Перейти к новости</a>
@@ -24,6 +24,9 @@
     </div>
   </div>
     <div class="panel-footer">
-      <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> {{post.likes.count}}
+      <a href="http://vk.com/{{post.user.screen_name}}" ng-show="post.user"><span class="glyphicon glyphicon-user" aria-hidden="true" ></span> {{post.user.last_name}} {{post.user.first_name}}&nbsp;&nbsp;</a>
+      <a href="http://vk.com/{{post.group.screen_name}}" ng-show="post.group"><span class="glyphicon glyphicon-list-alt" aria-hidden="true" ></span> {{post.group.name}}&nbsp;&nbsp;</a>
+      <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> {{post.likes.count}}&nbsp;&nbsp;
+      <span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span> {{post.reposts.count}}
     </div>
   </div>
