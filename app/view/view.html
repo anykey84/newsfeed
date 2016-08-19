@@ -2,7 +2,7 @@
 <a class="btn btn-default" href="/#/news">Вернуться к списку</a>
 <hr>
   <div class="panel panel-primary" >
-    <div class="panel-heading">{{vc.getDate(vc.post.date)}}</div>
+    <div class="panel-heading">[{{vc.getDate(vc.post.date)}}]</div>
     <div class="panel-body">{{vc.getText(vc.post.text)}}
       <br>
       <div class="images">
@@ -13,6 +13,9 @@
       </div>
     </div>
     <div class="panel-footer">
-      <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> {{vc.post.likes.count}}
+      <a href="http://vk.com/{{vc.post.user.screen_name}}" ng-show="vc.post.user"><span class="glyphicon glyphicon-user" aria-hidden="true" ></span> {{vc.post.user.last_name}} {{vc.post.user.first_name}}&nbsp;&nbsp;</a>
+      <a href="http://vk.com/{{vc.post.group.screen_name}}" ng-show="vc.post.group"><span class="glyphicon glyphicon-list-alt" aria-hidden="true" ></span> {{vc.post.group.name}}&nbsp;&nbsp;</a>
+      <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> {{vc.post.likes.count}}&nbsp;&nbsp;
+      <span class="glyphicon glyphicon-bullhorn" aria-hidden="true"></span> {{vc.post.reposts.count}}
     </div>
   </div>
